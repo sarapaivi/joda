@@ -27,9 +27,7 @@ class EtuoviScraperSpider(scrapy.Spider):
         year_text = response.css(\
           '[class="flexboxgrid__col-xs-3__3Kf8r flexboxgrid__col-md-4__2DYW-"] > span::text'\
           ).extract()
-        price_text = response.css(\
-          '[class="flexboxgrid__col-xs-4__p2Lev flexboxgrid__col-md-4__2DYW-"] > span::text'\
-          ).extract()
+        price_text = response.css('[class="flexboxgrid__col-xs-4__p2Lev flexboxgrid__col-md-4__2DYW-"] > span:first-of-type::text').extract()
 
         for i in range(len(price_text)):
             yield {
