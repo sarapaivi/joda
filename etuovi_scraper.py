@@ -1,7 +1,6 @@
 import scrapy
 # raapija, joka kerää etuovi.com:sta ilmoituksien tiedoista
 # asuntotyypin, osoitteen, hinnan, valmistuvuoden ja pinta-alan.
-# (Kyseessä Tampereen omakotitalot)
 class EtuoviScraperSpider(scrapy.Spider):
     name = 'etuovi_scraper'
     allowed_domains = ['etuovi.com']
@@ -12,7 +11,6 @@ class EtuoviScraperSpider(scrapy.Spider):
   # Funkito parse(self, response) käy läpi aloitusosoitteesta eteenpäin
   # sivuja, joilta dataa kerätään. Parse kutsuu parse_page-funktiota, jossa
   # on määritelty varsinainen kerättävä tieto.
-  # max 5 sivua tässä esimerkissä
     def parse(self, response):
         for i in range(1, 21):
             url=response.request.url[:-1]+str(i)
